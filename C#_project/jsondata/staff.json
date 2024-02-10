@@ -1,0 +1,9 @@
+{
+  "StaffName": "John",
+  "Email": "john@example.com",
+  "Contact": "5551234",
+  "BirthDate": "1990-12-10",
+  "HireDate": "2015-02-28",
+  "Address": "Los Angeles",
+  "PositionID":  1
+}

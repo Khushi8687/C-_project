@@ -1,0 +1,20 @@
+﻿﻿@model IEnumerable<C__project.Models.StaffDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+@foreach (C__project.Models.StaffDto Staff in Model)
+{
+    <div>
+        <h2>Staff Name: @Staff.StaffName</h2>
+        <div>Email: @Staff.Email</div>
+        <div>Contact: @Staff.Contact</div>
+        <div>Birthdate: @Staff.BirthDate</div>
+        <div>Hiredate: @Staff.HireDate</div>
+        <div>Address: @Staff.Address</div>
+        <div>PositionName: @Staff.PositionName</div>
+
+    </div>
+ }

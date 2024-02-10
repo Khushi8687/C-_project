@@ -1,0 +1,17 @@
+﻿﻿@model IEnumerable<C__project.Models.ShiftDto>
+@{
+    ViewBag.Title = "SList";
+}
+
+<h2>List</h2>
+
+@foreach (C__project.Models.ShiftDto Shift in Model)
+{
+    <div>
+        <h2>Day: @Shift.Day</h2>
+        <div>Date: @Shift.Date</div>
+        <div>Starttime: @Shift.StartTime</div>
+        <div>Endtime: @Shift.EndTime</div>
+       
+    </div>
+}
