@@ -182,12 +182,15 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DetailsStaff.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PositionDataController.cs" />
+    <Compile Include="Controllers\ShiftController.cs" />
     <Compile Include="Controllers\ShiftDataController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StaffDataController.cs" />
+    <Compile Include="Controllers\Updatestaff.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -243,6 +246,14 @@
     <Compile Include="Migrations\202402100259551_three.designer.cs">
       <DependentUpon>202402100259551_three.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202402230111168_fourth.cs" />
+    <Compile Include="Migrations\202402230111168_fourth.designer.cs">
+      <DependentUpon>202402230111168_fourth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202402240034068_Add-Migration.cs" />
+    <Compile Include="Migrations\202402240034068_Add-Migration.designer.cs">
+      <DependentUpon>202402240034068_Add-Migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -250,6 +261,7 @@
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Shift.cs" />
     <Compile Include="Models\Staff.cs" />
+    <Compile Include="Models\viewmodel\DetailsStaff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -280,6 +292,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="jsondata\staff.json" />
+    <None Include="jsondata\-d" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -328,7 +341,12 @@
     <Content Include="Views\Staff\List.cshtml" />
     <Content Include="Views\Staff\Add.cshtml" />
     <Content Include="Views\Staff\Edit.cshtml" />
-    <Content Include="Views\Shift\SList.cshtml" />
+    <Content Include="Views\Shift\List.cshtml" />
+    <Content Include="Views\Shift\Add.cshtml" />
+    <Content Include="Views\Shift\Edit.cshtml" />
+    <Content Include="Views\Staff\DeleteConfirm.cshtml" />
+    <Content Include="Views\Staff\Details.cshtml" />
+    <Content Include="Views\Shift\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -400,6 +418,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202402100259551_three.resx">
       <DependentUpon>202402100259551_three.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202402230111168_fourth.resx">
+      <DependentUpon>202402230111168_fourth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202402240034068_Add-Migration.resx">
+      <DependentUpon>202402240034068_Add-Migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

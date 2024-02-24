@@ -38,8 +38,6 @@ namespace C__project.Controllers
                 Address = b.Address,
                 PositionName = b.Position.PositionName
 
-
-
             }
                 ));
                 return StaffDtos;
@@ -97,7 +95,7 @@ namespace C__project.Controllers
 
 
         //update staff
-
+        // POST: api/StaffData/UpdateAnimal/5
         [ResponseType(typeof(void))]
         [HttpPost]
         [Route("api/StaffData/updatestaff/{id}")]

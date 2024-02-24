@@ -1,0 +1,27 @@
+﻿﻿@model C__project.Models.ShiftDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>SEdit</h2>
+
+<form method="POST" action="/Shift/edit/@Model.ShiftID">
+    <input type="text" style="display:none;" name="ShiftId" value="@Model.ShiftID" />
+    <div>
+        <label>Day</label>
+        <input type="text" name="Day" value="@Model.Day" />
+    </div>
+    <div>
+        <label>Date:</label> <input type="date" name="Date" value="@Model.Date" />
+    </div>
+    <div>
+        <label>StartTime:</label> <input type="datetime" name="StartTime" value="@Model.StartTime" />
+    </div>
+    <div>
+        <label>EndTime:</label> <input type="text" name="EndTime" value="@Model.EndTime"/>
+    </div>
+    <div>
+    <input type="submit" value="Update" />
+    </div>
+
+</form>

@@ -4,16 +4,12 @@
 }
 
 <h2>List</h2>
-
+<a href="/Staff/Add">New Staff</a>
 @foreach (C__project.Models.StaffDto Staff in Model)
 {
     <div>
-        <h2>Staff Name: @Staff.StaffName</h2>
-        <div>Email: @Staff.Email</div>
-        <div>Contact: @Staff.Contact</div>
-        <div>Birthdate: @Staff.BirthDate</div>
-        <div>Hiredate: @Staff.HireDate</div>
-        <div>Address: @Staff.Address</div>
+        <h2><a href="/Staff/Details/@Staff.StaffID">Staff Name: @Staff.StaffName</a></h2>
+       
         <div>PositionName: @Staff.PositionName</div>
 
     </div>

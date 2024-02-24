@@ -1,0 +1,20 @@
+﻿@model C__project.Models.StaffDto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<a href="/Staff/List">Go back to list</a>
+<br />
+<a href="/Staff/Edit/@Model.StaffID">Update</a>
+<br />
+<a style="color:#ab2020;" href="/Staff/DeleteConfirm/@Model.StaffID">Delete</a>
+
+<h2>@Model.StaffName</h2>
+<div>@Model.Email</div>
+<div>@Model.Contact</div>
+<div>@Model.BirthDate</div>
+<div>@Model.HireDate</div>
+<div>@Model.Address</div>

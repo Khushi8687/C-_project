@@ -11,7 +11,7 @@ namespace C__project.Models
     {
         [Key]
         public int StaffID { get; set; }
-
+        
         public string StaffName { get; set; }
 
         public string Email { get; set; }
@@ -42,6 +42,8 @@ namespace C__project.Models
 
     public class StaffDto
     {
+
+
         public int StaffID { get; set; }
 
         public string StaffName { get; set; }

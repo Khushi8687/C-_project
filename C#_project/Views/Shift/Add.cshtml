@@ -1,0 +1,24 @@
+﻿@model C__project.Models.Shift
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add Shift</h2>
+
+<form action="/Shift/Create" method="POST">
+    <div>
+        <label>Day:</label> <input type="text" name="Day" />
+    </div>
+    <div>
+        <label>Date:</label> <input type="date" name="Date" />
+    </div>
+    <div>
+        <label>StartTime:</label> <input type="datetime" name="StartTime" />
+    </div>
+    <div>
+        <label>EndTime:</label> <input type="text" name="EndTime"/>
+    </div>
+    <div>
+        <input type="submit" value="Add Shift" />
+    </div>
+</form>
