@@ -1,13 +1,14 @@
-﻿using C__project.Migrations;
-using C__project.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using System.Diagnostics;
+using C__project.Models;
 using System.Web.Script.Serialization;
+using System.Web.UI.WebControls;
+using C__project.Models.viewmodel;
 
 namespace C__project.Controllers
 {
@@ -30,14 +31,12 @@ namespace C__project.Controllers
             //curl https://localhost:44357/api/shiftdata/listshifts
 
 
-            string url = " https://localhost:44357/api/shiftdata/listshifts";
+            string url = "shiftdata/listshift";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
+             
 
-
-            List<ShiftDto> shifts = response.Content.ReadAsAsync<List<ShiftDto>>().Result;
-
-
+            IEnumerable<ShiftDto> shifts = response.Content.ReadAsAsync<IEnumerable<ShiftDto>>().Result;
 
             return View(shifts);
         }
@@ -102,30 +101,50 @@ namespace C__project.Controllers
             }
 
         }
-      
+        public ActionResult Edit(int id)
+        {
+            Updateshift ViewModel = new Updateshift();
+
+
+            string url = "shiftdata/findshift/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            ShiftDto SelectedShift = response.Content.ReadAsAsync<ShiftDto>().Result;
+            //ViewModel.SelectedStaff = SelectedStaff;
+
+
+            return View(SelectedShift);
+        }
 
 
         //update
         [HttpPost]
+
         public ActionResult Update(int id, Shift shift)
         {
-
-            //curl https://localhost:44357/api/shiftdata/updateshifts
-
-            string url = "shiftdata/updateshift/" + id;
-            string jsonpayload = jss.Serialize(shift);
-            HttpContent content = new StringContent(jsonpayload);
-            content.Headers.ContentType.MediaType = "application/json";
-            HttpResponseMessage response = client.PostAsync(url, content).Result;
-            Debug.WriteLine(content);
-            if (response.IsSuccessStatusCode)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("List");
+                string url = "api/ShiftData/editshift/" + id;
+                string jsonpayload = jss.Serialize(shift);
+                HttpContent content = new StringContent(jsonpayload);
+                content.Headers.ContentType.MediaType = "application/json";
+                HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("List");
+                }
+                else
+                {
+                    return RedirectToAction("Error");
+                }
             }
-            else
-            {
-                return RedirectToAction("Error");
-            }
+
+            return View(shift);
+        }
+
+        public ActionResult Error()
+        {
+            return View();
         }
 
         //delete

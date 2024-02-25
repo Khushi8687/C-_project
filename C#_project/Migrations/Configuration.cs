@@ -10,7 +10,6 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "C__project.Models.ApplicationDbContext";
         }
 
         protected override void Seed(C__project.Models.ApplicationDbContext context)

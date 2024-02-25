@@ -11,6 +11,6 @@ namespace C__project.Models.viewmodel
         public StaffDto SelectedStaff { get; set; }
         public IEnumerable<ShiftDto> ResponsibleShift { get; set; }
 
-        public IEnumerable<ShiftDto> AvailableShift { get; set; }
+      
     }
 }

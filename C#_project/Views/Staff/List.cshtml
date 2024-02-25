@@ -4,7 +4,7 @@
 }
 
 <h2>List</h2>
-<a href="/Staff/Add">New Staff</a>
+<a class="btn add" href="/Staff/Add">New Staff</a>
 @foreach (C__project.Models.StaffDto Staff in Model)
 {
     <div>
@@ -14,3 +14,20 @@
 
     </div>
  }
+<style>
+    .btn {
+        border: none;
+        color: white;
+        padding: 6px 9px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .add {
+        background-color: #4CAF50;
+    }
+</style>

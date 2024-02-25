@@ -1,16 +1,22 @@
-﻿﻿@model C__project.Models.StaffDto
+﻿@model C__project.Models.StaffDto
+
 @{
     ViewBag.Title = "DeleteConfirm";
 }
 
 <h2>DeleteConfirm</h2>
 
-<h2>Are you sure you want to delete this staff?</h2>
-<a href="/Staff/List">Cancel</a>
+<h2>Are you sure you want to delete this staff @Model.StaffName?</h2>
+<a class="btn cancel" href="/Staff/List">Cancel</a>
 <h2>@Model.StaffName</h2>
 <div>Name: @Model.StaffName</div>
-<div>Email: @Model.Contact</div>
 <form action="/Staff/Delete/@Model.StaffID" method="POST">
     <input type="submit" value="Confirm Delete" />
-
 </form>
+
+<style>
+    .btn{
+        padding: 5px;
+        background-color:burlywood;
+    }
+</style>

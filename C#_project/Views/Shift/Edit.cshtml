@@ -5,7 +5,7 @@
 
 <h2>SEdit</h2>
 
-<form method="POST" action="/Shift/edit/@Model.ShiftID">
+<form method="POST" action="/Shift/Edit/@Model.ShiftID">
     <input type="text" style="display:none;" name="ShiftId" value="@Model.ShiftID" />
     <div>
         <label>Day</label>
@@ -18,10 +18,11 @@
         <label>StartTime:</label> <input type="datetime" name="StartTime" value="@Model.StartTime" />
     </div>
     <div>
-        <label>EndTime:</label> <input type="text" name="EndTime" value="@Model.EndTime"/>
+        <label>EndTime:</label> <input type="text" name="EndTime" value="@Model.EndTime" />
     </div>
+   
     <div>
-    <input type="submit" value="Update" />
+        <input type="submit" value="Update" />
     </div>
 
 </form>

@@ -1,20 +1,64 @@
-﻿@model C__project.Models.StaffDto
+﻿@model C__project.Models.viewmodel.DetailsStaff
 
 @{
     ViewBag.Title = "Details";
+
 }
 
 <h2>Details</h2>
 
 <a href="/Staff/List">Go back to list</a>
 <br />
-<a href="/Staff/Edit/@Model.StaffID">Update</a>
-<br />
-<a style="color:#ab2020;" href="/Staff/DeleteConfirm/@Model.StaffID">Delete</a>
+<a class="btn update" href="/Staff/Edit/@Model.SelectedStaff.StaffID">Update</a>
+<a class="btn delete" href="/Staff/DeleteConfirm/@Model.SelectedStaff.StaffName">Delete</a>
 
-<h2>@Model.StaffName</h2>
-<div>@Model.Email</div>
-<div>@Model.Contact</div>
-<div>@Model.BirthDate</div>
-<div>@Model.HireDate</div>
-<div>@Model.Address</div>
+<h2>StaffName: @Model.SelectedStaff.StaffName</h2>
+<div> Email:   @Model.SelectedStaff.Email</div>
+<div>Contact: @Model.SelectedStaff.Contact</div>
+<div>BirthDate: @Model.SelectedStaff.BirthDate</div>
+<div>HireDate: @Model.SelectedStaff.HireDate</div>
+<div>Address: @Model.SelectedStaff.Address</div>
+
+
+<div>
+    <a class="btn add" href="/Shift/Add/@Model.SelectedStaff.StaffID">Add Shift</a>
+
+    <br />
+    @foreach (var shift in Model.ResponsibleShift)
+    {
+        <div>
+            <a class="btn update" href="/Shift/Edit/@shift.ShiftID">Update </a><br />
+            <div>Day: @shift.Day</div>
+            <div>Date: @shift.Date</div>
+            <div>StartTime: @shift.StartTime</div>
+            <div>EndTime @shift.EndTime</div>
+        </div>
+    }
+</div>
+
+
+<style>
+    .btn {
+        border: none;
+        color: white;
+        padding: 5px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        //font-size: 1px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .add {
+        background-color: #4CAF50;
+    }
+
+    .update {
+        background-color: cornflowerblue;
+    }
+
+    .delete {
+        background-color: brown;
+    }
+</style>

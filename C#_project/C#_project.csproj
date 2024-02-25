@@ -190,69 +190,14 @@
     <Compile Include="Controllers\ShiftDataController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\StaffDataController.cs" />
-    <Compile Include="Controllers\Updatestaff.cs" />
+    <Compile Include="Controllers\Updateshift.cs" />
+    <Compile Include="Controllers\Updatestaff1.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202402082315502_InitialCreate.cs" />
-    <Compile Include="Migrations\202402082315502_InitialCreate.designer.cs">
-      <DependentUpon>202402082315502_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202402090024115_staffs.cs" />
-    <Compile Include="Migrations\202402090024115_staffs.designer.cs">
-      <DependentUpon>202402090024115_staffs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202402090040316_positions.cs" />
-    <Compile Include="Migrations\202402090040316_positions.designer.cs">
-      <DependentUpon>202402090040316_positions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202402090049064_staffs1.cs" />
-    <Compile Include="Migrations\202402090049064_staffs1.designer.cs">
-      <DependentUpon>202402090049064_staffs1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202402090053525_changed-name.cs" />
-    <Compile Include="Migrations\202402090053525_changed-name.designer.cs">
-      <DependentUpon>202402090053525_changed-name.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202402090101412_shifts.cs" />
-    <Compile Include="Migrations\202402090101412_shifts.designer.cs">
-      <DependentUpon>202402090101412_shifts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202402090137265_shiftDate.cs" />
-    <Compile Include="Migrations\202402090137265_shiftDate.designer.cs">
-      <DependentUpon>202402090137265_shiftDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202402092023447_first.cs" />
-    <Compile Include="Migrations\202402092023447_first.designer.cs">
-      <DependentUpon>202402092023447_first.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202402092235343_second.cs" />
-    <Compile Include="Migrations\202402092235343_second.designer.cs">
-      <DependentUpon>202402092235343_second.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202402100244144_shift.cs" />
-    <Compile Include="Migrations\202402100244144_shift.designer.cs">
-      <DependentUpon>202402100244144_shift.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202402100252106_new.cs" />
-    <Compile Include="Migrations\202402100252106_new.designer.cs">
-      <DependentUpon>202402100252106_new.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202402100255547_new-shifts.cs" />
-    <Compile Include="Migrations\202402100255547_new-shifts.designer.cs">
-      <DependentUpon>202402100255547_new-shifts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202402100259551_three.cs" />
-    <Compile Include="Migrations\202402100259551_three.designer.cs">
-      <DependentUpon>202402100259551_three.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202402230111168_fourth.cs" />
-    <Compile Include="Migrations\202402230111168_fourth.designer.cs">
-      <DependentUpon>202402230111168_fourth.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202402240034068_Add-Migration.cs" />
-    <Compile Include="Migrations\202402240034068_Add-Migration.designer.cs">
-      <DependentUpon>202402240034068_Add-Migration.cs</DependentUpon>
+    <Compile Include="Migrations\202402240104214_second.cs" />
+    <Compile Include="Migrations\202402240104214_second.designer.cs">
+      <DependentUpon>202402240104214_second.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -292,6 +237,9 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="jsondata\staff.json" />
+    <Content Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </Content>
     <None Include="jsondata\-d" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -346,7 +294,7 @@
     <Content Include="Views\Shift\Edit.cshtml" />
     <Content Include="Views\Staff\DeleteConfirm.cshtml" />
     <Content Include="Views\Staff\Details.cshtml" />
-    <Content Include="Views\Shift\Details.cshtml" />
+    <Content Include="Views\Shift\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -380,50 +328,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202402082315502_InitialCreate.resx">
-      <DependentUpon>202402082315502_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202402090024115_staffs.resx">
-      <DependentUpon>202402090024115_staffs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202402090040316_positions.resx">
-      <DependentUpon>202402090040316_positions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202402090049064_staffs1.resx">
-      <DependentUpon>202402090049064_staffs1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202402090053525_changed-name.resx">
-      <DependentUpon>202402090053525_changed-name.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202402090101412_shifts.resx">
-      <DependentUpon>202402090101412_shifts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202402090137265_shiftDate.resx">
-      <DependentUpon>202402090137265_shiftDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202402092023447_first.resx">
-      <DependentUpon>202402092023447_first.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202402092235343_second.resx">
-      <DependentUpon>202402092235343_second.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202402100244144_shift.resx">
-      <DependentUpon>202402100244144_shift.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202402100252106_new.resx">
-      <DependentUpon>202402100252106_new.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202402100255547_new-shifts.resx">
-      <DependentUpon>202402100255547_new-shifts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202402100259551_three.resx">
-      <DependentUpon>202402100259551_three.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202402230111168_fourth.resx">
-      <DependentUpon>202402230111168_fourth.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202402240034068_Add-Migration.resx">
-      <DependentUpon>202402240034068_Add-Migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202402240104214_second.resx">
+      <DependentUpon>202402240104214_second.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

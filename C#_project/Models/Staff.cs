@@ -35,8 +35,7 @@ namespace C__project.Models
 
         public virtual Positions Position { get; set; }
 
-        public ICollection<Shift> Shifts { get; set; }  
-
+      
     }
 
 
@@ -52,6 +51,7 @@ namespace C__project.Models
 
         public int Contact { get; set; }
 
+        public int PositionID { get; set; }
         public string PositionName { get; set; }
 
         public DateTime BirthDate { get; set; }
@@ -59,6 +59,8 @@ namespace C__project.Models
         public DateTime HireDate { get; set; }
 
         public string Address { get; set; }
+
+     
 
     }
 }

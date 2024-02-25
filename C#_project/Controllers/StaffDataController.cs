@@ -66,7 +66,8 @@ namespace C__project.Controllers
                 BirthDate = Staff.BirthDate,
                 HireDate = Staff.HireDate,
                 Address = Staff.Address,
-                PositionName= Staff.Position.PositionName
+                PositionName= Staff.Position.PositionName,
+               
             };
 
             return Ok(StaffDto);
@@ -95,10 +96,10 @@ namespace C__project.Controllers
 
 
         //update staff
-        // POST: api/StaffData/UpdateAnimal/5
+        // POST: api/StaffData/EditStaff/5
         [ResponseType(typeof(void))]
         [HttpPost]
-        [Route("api/StaffData/updatestaff/{id}")]
+        [Route("api/StaffData/editstaff/{id}")]
         public IHttpActionResult UpdateStaff(int id, Staff staff)
         {
             Debug.WriteLine("I have reached the update staff method!");
@@ -181,9 +182,8 @@ namespace C__project.Controllers
 
         private bool StaffExists(int id)
         {
-            return db.Staffs.Count(e => e.StaffID == id) > 0;
+            return db.Staffs.Any(e => e.StaffID == id) ;
         }
-
-        
+      
     }
 }

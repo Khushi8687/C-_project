@@ -8,6 +8,7 @@ using System.Diagnostics;
 using C__project.Models;
 using System.Web.Script.Serialization;
 using System.Web.UI.WebControls;
+using C__project.Models.viewmodel;
 
 namespace C__project.Controllers
 {
@@ -44,7 +45,7 @@ namespace C__project.Controllers
 
         public ActionResult Details(int id)
         {
-            DetailsStaff viewModel = new DetailsStaff();
+            C__project.Models.viewmodel.DetailsStaff viewModel = new C__project.Models.viewmodel.DetailsStaff();
 
             // Retrieve the details of the selected staff member
             string staffUrl = "staffdata/findstaff/" + id;
@@ -53,7 +54,7 @@ namespace C__project.Controllers
             {
                 Debug.WriteLine("response from staff");
                 StaffDto selectedStaff = staffResponse.Content.ReadAsAsync<StaffDto>().Result;
-                viewModel.selectedstaff = selectedStaff;
+                viewModel.SelectedStaff = selectedStaff;
             }
             else
             {
@@ -128,16 +129,16 @@ namespace C__project.Controllers
 
         }
 
+      
+
         public ActionResult Edit(int id)
         {
             Updatestaff ViewModel = new Updatestaff();
 
-           
             string url = "staffdata/findstaff/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             StaffDto SelectedStaff = response.Content.ReadAsAsync<StaffDto>().Result;
             //ViewModel.SelectedStaff = SelectedStaff;
-
 
             return View(SelectedStaff);
         }
@@ -149,8 +150,8 @@ namespace C__project.Controllers
             {
 
             //curl https://localhost:44357/api/staffdata/updatestaffs
-
-                string url = "staffdata/updatestaff/" + id;
+         
+            string url = "staffdata/editstaff/" + id;
                 string jsonpayload = jss.Serialize(staff);
                 HttpContent content = new StringContent(jsonpayload);
                 content.Headers.ContentType.MediaType = "application/json";
@@ -169,13 +170,12 @@ namespace C__project.Controllers
         //delete
         public ActionResult DeleteConfirm(int id)
         {
-            string url = "staffdata/deletestaff/" + id;
+            string url = "staffdata/findstaff/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             StaffDto selectedstaff = response.Content.ReadAsAsync<StaffDto>().Result;
             return View(selectedstaff);
         }
 
-        
         [HttpPost]
         public ActionResult Delete(int id)
         {

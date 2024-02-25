@@ -17,8 +17,7 @@ namespace C__project.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         //list shift
         [HttpGet]
-        [Route("api/ShiftData/ListShift")]
-
+        [Route("api/shiftdata/listshift")]
         public List<ShiftDto> ListShift()
         {
             //query to db
@@ -33,7 +32,7 @@ namespace C__project.Controllers
                 Date = c.Date,
                 StartTime = c.StartTime,
                 EndTime = c.EndTime
-               
+
 
             }
                 ));
@@ -61,7 +60,7 @@ namespace C__project.Controllers
                 Date = Shift.Date,
                 StartTime = Shift.StartTime,
                 EndTime = Shift.EndTime
-                
+
             };
 
             return Ok(ShiftDto);
@@ -88,7 +87,7 @@ namespace C__project.Controllers
 
         [ResponseType(typeof(void))]
         [HttpPost]
-        [Route("api/StaffData/updateshift/{id}")]
+        [Route("api/StaffData/editshift/{id}")]
         public IHttpActionResult UpdateShift(int id, Shift shift)
         {
             Debug.WriteLine("I have reached the update shift method!");
@@ -107,8 +106,8 @@ namespace C__project.Controllers
                 Debug.WriteLine("POST parameter" + shift.Date);
                 Debug.WriteLine("POST parameter" + shift.StartTime);
                 Debug.WriteLine("POST parameter" + shift.EndTime);
-               
-               
+
+
                 return BadRequest();
             }
 
@@ -140,8 +139,35 @@ namespace C__project.Controllers
             throw new NotImplementedException();
         }
 
-       // public listshiftforstaff
+        // GET: api/ShiftData/ListShiftForStaff/5
+        [HttpGet]
+        [ResponseType(typeof(IEnumerable<ShiftDto>))]
+        [Route("api/ShiftData/ListShiftForStaff/{id}")]
+        public IHttpActionResult ListShiftForStaff(int id)
+        {
+            try
+            {
+                var shifts = db.Shifts
+                    .Where(staff => staff.StaffID == id)
+                    .ToList();
 
+                var shiftDtos = shifts.Select(s => new ShiftDto
+                {
+                    ShiftID = s.ShiftID,
+                    Day = s.Day,
+                    Date = s.Date,
+                    StartTime = s.StartTime,
+                    EndTime = s.EndTime
+                }).ToList();
 
+                return Ok(shiftDtos);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return InternalServerError();
+            }
+
+        }
     }
 }

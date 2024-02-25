@@ -20,14 +20,13 @@ namespace C__project.Models
 
         public DateTime EndTime { get; set; }
 
-        public virtual ICollection<Staff> Staff { get; set; }
-
+       
         // Foreign key to Staff
-        [ForeignKey("Staff")]
+        [ForeignKey("Staffs")]
         public int StaffID { get; set; }
 
- 
-        public virtual Staff staffs { get; set; }
+      
+        public virtual Staff Staffs { get; set; }
     }
 
     public class ShiftDto

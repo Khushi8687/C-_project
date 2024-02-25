@@ -3,10 +3,19 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class second : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Positions",
+                c => new
+                    {
+                        PositionID = c.Int(nullable: false, identity: true),
+                        PositionName = c.String(),
+                    })
+                .PrimaryKey(t => t.PositionID);
+            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -29,6 +38,38 @@
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.Shifts",
+                c => new
+                    {
+                        ShiftID = c.Int(nullable: false, identity: true),
+                        Day = c.String(),
+                        Date = c.DateTime(nullable: false),
+                        StartTime = c.DateTime(nullable: false),
+                        EndTime = c.DateTime(nullable: false),
+                        StaffID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ShiftID)
+                .ForeignKey("dbo.Staffs", t => t.StaffID, cascadeDelete: true)
+                .Index(t => t.StaffID);
+            
+            CreateTable(
+                "dbo.Staffs",
+                c => new
+                    {
+                        StaffID = c.Int(nullable: false, identity: true),
+                        StaffName = c.String(),
+                        Email = c.String(),
+                        Contact = c.Int(nullable: false),
+                        BirthDate = c.DateTime(nullable: false),
+                        HireDate = c.DateTime(nullable: false),
+                        Address = c.String(),
+                        PositionID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.StaffID)
+                .ForeignKey("dbo.Positions", t => t.PositionID, cascadeDelete: true)
+                .Index(t => t.PositionID);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -82,18 +123,25 @@
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Shifts", "StaffID", "dbo.Staffs");
+            DropForeignKey("dbo.Staffs", "PositionID", "dbo.Positions");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.Staffs", new[] { "PositionID" });
+            DropIndex("dbo.Shifts", new[] { "StaffID" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.Staffs");
+            DropTable("dbo.Shifts");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Positions");
         }
     }
 }
