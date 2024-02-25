@@ -9,6 +9,7 @@ using System.Web.Http.Description;
 
 namespace C__project.Controllers
 {
+   // this contains positionid and position name which staff table take information on staff position 
     public class PositionDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
