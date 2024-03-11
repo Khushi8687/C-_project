@@ -9,31 +9,50 @@
 
 <a href="/Staff/List">Go back to list</a>
 <br />
-<a class="btn update" href="/Staff/Edit/@Model.SelectedStaff.StaffID">Update</a>
-<a class="btn delete" href="/Staff/DeleteConfirm/@Model.SelectedStaff.StaffName">Delete</a>
-
-<h2>StaffName: @Model.SelectedStaff.StaffName</h2>
-<div> Email:   @Model.SelectedStaff.Email</div>
-<div>Contact: @Model.SelectedStaff.Contact</div>
-<div>BirthDate: @Model.SelectedStaff.BirthDate</div>
-<div>HireDate: @Model.SelectedStaff.HireDate</div>
-<div>Address: @Model.SelectedStaff.Address</div>
-
-
+<div style="display: flex; justify-content: space-between;">
+    <div>
+        <h3>Staff Name: @Model.SelectedStaff.StaffName</h3>
+        <div><span> Email:   </span>@Model.SelectedStaff.Email</div>
+        <div><span>Contact: </span>@Model.SelectedStaff.Contact</div>
+        <div><span>BirthDate: </span>@Model.SelectedStaff.BirthDate.ToShortDateString()</div>
+        <div><span>HireDate: </span>@Model.SelectedStaff.HireDate.ToShortDateString()</div>
+        <div><span>Address:</span>@Model.SelectedStaff.Address</div>
+        
+    </div>
+    <div style="display: flex; align-items: center;">
+        <a class="btn update" href="/Staff/Edit/@Model.SelectedStaff.StaffID">Update</a>
+        <a class="btn delete" href="/Staff/DeleteConfirm/@Model.SelectedStaff.StaffID">Delete</a>
+    </div>
+</div>
 <div>
+    <h2>Shifts</h2>
     <a class="btn add" href="/Shift/Add/@Model.SelectedStaff.StaffID">Add Shift</a>
-
-    <br />
-    @foreach (var shift in Model.ResponsibleShift)
-    {
-        <div>
-            <a class="btn update" href="/Shift/Edit/@shift.ShiftID">Update </a><br />
-            <div>Day: @shift.Day</div>
-            <div>Date: @shift.Date</div>
-            <div>StartTime: @shift.StartTime</div>
-            <div>EndTime @shift.EndTime</div>
-        </div>
-    }
+    <table>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var shift in Model.ResponsibleShift)
+            {
+                <tr>
+                    <td>@shift.Day</td>
+                    <td>@shift.Date.ToShortDateString()</td>
+                    <td>@shift.StartTime.ToString("hh:mm tt")</td>
+                    <td>@shift.EndTime.ToString("hh:mm tt")</td>
+                    <td style="display: flex; align-items: center;">
+                        <a class="btn update" href="/Shift/Edit/@shift.ShiftID">Update</a>
+                        <a class="btn delete" href="/Shift/DeleteConfirm/@shift.ShiftID">Delete </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 
 
@@ -45,20 +64,54 @@
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        //font-size: 1px;
         margin: 4px 2px;
         cursor: pointer;
     }
 
     .add {
-        background-color: #4CAF50;
+        background-color: #344E41;
     }
 
     .update {
-        background-color: cornflowerblue;
+        background-color: #3A5A40;
     }
 
     .delete {
         background-color: brown;
+    }
+
+    h2 {
+        margin-top: 0;
+        color: #344E41;
+        font-weight: bold;
+    }
+
+    div {
+        margin-bottom: 5px;
+    }
+
+    span {
+        font-weight: bold;
+    }
+
+    .delete, .update {
+        font-size: 12px;
+        padding: 3px 5px;
+        margin: 0 2px;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #A3B18A;
     }
 </style>

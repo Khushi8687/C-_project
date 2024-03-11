@@ -115,21 +115,23 @@ namespace C__project.Controllers
             return View(SelectedShift);
         }
 
-
+        //GET: Shift/Update/2
         //update
         [HttpPost]
 
         public ActionResult Update(int id, Shift shift)
         {
-            if (ModelState.IsValid)
-            {
-                string url = "api/ShiftData/editshift/" + id;
+            // if (ModelState.IsValid)
+            //curl https://localhost:44357/api/shiftdata/updateshifts
+
+
+            string url = "shiftData/editshift/" + id;
                 string jsonpayload = jss.Serialize(shift);
                 HttpContent content = new StringContent(jsonpayload);
                 content.Headers.ContentType.MediaType = "application/json";
                 HttpResponseMessage response = client.PostAsync(url, content).Result;
-
-                if (response.IsSuccessStatusCode)
+            Debug.WriteLine(content);
+            if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("List");
                 }
@@ -139,23 +141,22 @@ namespace C__project.Controllers
                 }
             }
 
-            return View(shift);
-        }
+            //return View(shift);
+        
 
-        public ActionResult Error()
-        {
-            return View();
-        }
+       public ActionResult Error()
+       {
+          return View();
+      }
 
         //delete
         public ActionResult DeleteConfirm(int id)
         {
-            string url = "shiftdata/deleteshift/" + id;
+            string url = "shiftdata/findshift/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             ShiftDto selectedshift = response.Content.ReadAsAsync<ShiftDto>().Result;
             return View(selectedshift);
         }
-
 
         [HttpPost]
         public ActionResult Delete(int id)

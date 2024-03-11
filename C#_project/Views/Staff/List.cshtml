@@ -2,19 +2,43 @@
 @{
     ViewBag.Title = "List";
 }
-
 <h2>List</h2>
 <a class="btn add" href="/Staff/Add">New Staff</a>
-@foreach (C__project.Models.StaffDto Staff in Model)
-{
-    <div>
-        <h2><a href="/Staff/Details/@Staff.StaffID">Staff Name: @Staff.StaffName</a></h2>
-       
-        <div>PositionName: @Staff.PositionName</div>
-
-    </div>
- }
+<table>
+    <thead>
+        <tr>
+            <th>Staff Name</th>
+            <th>Position Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (C__project.Models.StaffDto Staff in Model)
+        {
+            <tr>
+                <td>@Staff.StaffName</td>
+                <td>@Staff.PositionName</td>
+                <td><a class="btn view" href="/Staff/Details/@Staff.StaffID">View</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
 <style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #A3B18A;
+    }
+
     .btn {
         border: none;
         color: white;
@@ -28,6 +52,10 @@
     }
 
     .add {
-        background-color: #4CAF50;
+        background-color: #344E41;
+    }
+
+    .view {
+        background-color: #3A5A40;
     }
 </style>

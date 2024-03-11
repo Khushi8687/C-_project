@@ -9,6 +9,8 @@ namespace C__project
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+          
         }
     }
+    
 }

@@ -3,7 +3,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Edit Staff</h2>
 
 <form method="POST" action="/Staff/Update/@Model.StaffID">
     <input type="text" style="display:none;" name="StaffId" value="@Model.StaffID" />
@@ -36,3 +36,39 @@
     </div>
 
 </form>
+
+<style>
+
+    form div {
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: inline-block;
+        width: 6%;
+    }
+
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="date"],
+    form input[type="number"] {
+        width: 70%;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    form input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #344E41;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+
+        form input[type="submit"]:hover {
+            background-color: #2E3D34;
+        }
+</style>

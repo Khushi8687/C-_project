@@ -84,10 +84,11 @@ namespace C__project.Controllers
             return CreatedAtRoute("DefaultApi", new { id = shift.ShiftID }, shift);
         }
 
-
+        //update shift
+        // POST: api/ShiftData/EditShift/5
         [ResponseType(typeof(void))]
         [HttpPost]
-        [Route("api/StaffData/editshift/{id}")]
+        [Route("api/ShiftData/editshift/{id}")]
         public IHttpActionResult UpdateShift(int id, Shift shift)
         {
             Debug.WriteLine("I have reached the update shift method!");
@@ -137,7 +138,45 @@ namespace C__project.Controllers
         private bool shiftExists(int id)
         {
             throw new NotImplementedException();
+
         }
+
+
+        [ResponseType(typeof(Shift))]
+        [HttpPost]
+        [Route("api/shiftdata/deleteshift/{id}")]
+        public IHttpActionResult DeleteShift(int id)
+        {
+           
+            Shift shift = db.Shifts.Find(id);
+
+            if (shift == null)
+            {
+                return NotFound();
+            }
+
+            db.Shifts.Remove(shift);
+            db.SaveChanges();
+
+            return Ok();
+        }
+          
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool ShiftExists(int id)
+        {
+            return db.Shifts.Any(e => e.ShiftID == id);
+        }
+
+
 
         // GET: api/ShiftData/ListShiftForStaff/5
         [HttpGet]

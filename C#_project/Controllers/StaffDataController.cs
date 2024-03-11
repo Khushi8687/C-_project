@@ -133,7 +133,7 @@ namespace C__project.Controllers
             {
                 if (!staffExists(id))
                 {
-                    Debug.WriteLine("Staff not found");
+                   Debug.WriteLine("Staff not found");
                     return NotFound();
                 }
                 else

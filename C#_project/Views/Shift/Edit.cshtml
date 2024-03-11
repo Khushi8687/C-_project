@@ -3,9 +3,9 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>SEdit</h2>
+<h2>Shift Edit</h2>
 
-<form method="POST" action="/Shift/Edit/@Model.ShiftID">
+<form method="POST" action="/Shift/Update/@Model.ShiftID">
     <input type="text" style="display:none;" name="ShiftId" value="@Model.ShiftID" />
     <div>
         <label>Day</label>
@@ -18,11 +18,48 @@
         <label>StartTime:</label> <input type="datetime" name="StartTime" value="@Model.StartTime" />
     </div>
     <div>
-        <label>EndTime:</label> <input type="text" name="EndTime" value="@Model.EndTime" />
+        <label>EndTime:</label> <input type="datetime" name="EndTime" value="@Model.EndTime" />
     </div>
-   
+
+  
     <div>
         <input type="submit" value="Update" />
     </div>
 
 </form>
+
+<style>
+
+    form div {
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: inline-block;
+        width: 6%;
+    }
+
+
+    form input[type="text"],
+    form input[type="datetime"],
+    form input[type="date"]
+    {
+        width: 70%;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    form input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #344E41;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+
+        form input[type="submit"]:hover {
+            background-color: #2E3D34;
+        }
+</style>
